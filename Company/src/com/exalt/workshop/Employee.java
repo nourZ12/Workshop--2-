@@ -6,8 +6,6 @@ private String name;
 private Department department;
 private Qualification [] qualificationSet;
 
-public Employee() {}
-
 public Employee(int iD, String name, Department department, Qualification[] qualificationSet) {
 	super();
 	ID = iD;
@@ -15,8 +13,6 @@ public Employee(int iD, String name, Department department, Qualification[] qual
 	this.department = department;
 	this.qualificationSet = qualificationSet;
 }
-
-
 
 public Employee(int iD, String name) {
 	super();
