@@ -5,10 +5,8 @@ public class Department {
 	private Employee [] employeeSet;
 	private Project [] projectSet;
 	
-	public Department(String name, Employee[] employeeSet, Project[] projectSet) {
+	public Department(String name) {
 		this.name = name;
-		this.employeeSet = employeeSet;
-		this.projectSet = projectSet;
 	}
 	
 	public String getName() {

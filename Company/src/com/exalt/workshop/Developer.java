@@ -3,9 +3,8 @@ package com.exalt.workshop;
 public class Developer extends Employee {
 	private Task[] taskSet;
 
-	public Developer(int iD, String name, Department department, Qualification[] qualificationSet, Task[] taskSet) {
+	public Developer(int iD, String name, Department department, Qualification[] qualificationSet) {
 		super(iD, name, department, qualificationSet);
-		this.taskSet = taskSet;
 	}
 	
 	public Developer(int iD, String name) {
@@ -19,5 +18,9 @@ public class Developer extends Employee {
 	public void setTaskSet(Task[] taskSet) {
 		this.taskSet = taskSet;
 	}
+	public Task getTask(int taskIndex) {
+		return this.taskSet[taskIndex];
+	}
+	
 
 }
