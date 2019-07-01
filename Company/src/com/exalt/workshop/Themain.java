@@ -29,8 +29,11 @@ public class Themain {
 	static ArrayList<Task> tasksArray = new ArrayList<Task>();
 	static ArrayList<Qualification> qualificationsArray = new ArrayList<Qualification>();
 
+	static String opjectsArray[] = {"department" ,"manager", "developer", "project" , "task" , "qualification"};
+	static ArrayList<ArrayList> ArraysArray = new ArrayList<ArrayList>();
 	
-	public static void main(String []argv) throws InterruptedException {
+	public static void main(String []argv) throws InterruptedException {	
+		
 		Scanner in = new Scanner(System.in);
 		int answer;
 		loadBasicInfo();
@@ -41,10 +44,27 @@ public class Themain {
 			answer = in.nextInt();
 			if(answer == 0){
 				viewMenu();
-				answer = in.nextInt();
+				//answer = in.nextInt();
 			} else if(answer == 1){
-				updateMenu();
+				
+				chooseTheArrayToUpdate();
+				int arrayToUodate = in.nextInt();
+				
+				updateActionMenu();
 				answer = in.nextInt();
+				
+				if(answer == 0) { // add
+					
+				}
+				else if (answer == 1) { // delete
+					System.out.println("inter the index fo the opject you ant to remove ");
+					printArray(""+arrayToUodate);
+					answer = in.nextInt();
+					ArraysArray.get(arrayToUodate).remove(answer);
+				}
+				else {
+					System.out.println("error: invalid input!");
+				}
 			} else {
 					System.out.println("error: invalid input!");
 			}
@@ -52,8 +72,18 @@ public class Themain {
 
 	}
 
-	private static void updateMenu() {
-		// TODO Auto-generated method stub
+	private static void chooseTheArrayToUpdate() {
+		System.out.println("what clasification do you want to update ? (inter the number)");
+		for (int x = 0 ; x< opjectsArray.length; x++) {
+			System.out.println(x +". " + opjectsArray[x]);
+		}
+		
+	}
+
+	private static void updateActionMenu() {
+		System.out.println("what is the action you want to take ? (inter the number)");
+		System.out.println("0. add");
+		System.out.println("1. delete");
 		
 	}
 
@@ -78,45 +108,53 @@ public class Themain {
 		
 	}
 
+	
+	
 	private static void printArray(String string) {
 		
 		switch (string) {
-			case "manager":  
-				ArrayList<Manager> mList = managersArray;
-				for (Manager temp : mList) {
-					System.out.println("   "  + temp.getName() + " : " + temp.getID());
-				}
-				break;
-				
-				
 			case "department":
+			case "0" :
 				ArrayList<Department> dList = departmentsArray;
 				for (Department temp : dList) {
-					System.out.println("   "  +  temp.getName());
+					System.out.println("   " + dList.indexOf(temp)+". " +  temp.getName());
+				}
+				break;	
+				
+			case "manager":
+			case  "1" :
+				ArrayList<Manager> mList = managersArray;
+				for (Manager temp : mList) {
+					System.out.println("   "  + mList.indexOf(temp)+". " + temp.getName() + " : " + temp.getID());
 				}
 				break;
+				
 			case "developers":
+			case "2" : 
 				ArrayList<Developer> vList =  developersArray;
 				for (Developer temp : vList) {
-					System.out.println("   "  +  temp.getName());
+					System.out.println("   "  + vList.indexOf(temp)+". " +  temp.getName());
 				}
 				break;
 			case "project":
+			case "3" : 
 				ArrayList<Project> pList =  projectsArray;
 				for (Project temp : pList) {
-					System.out.println("   "  +  temp.getName());
+					System.out.println("   "  + pList.indexOf(temp)+". " +  temp.getName());
 				}
 				break;
 			case "task":
+			case "4" : 
 				ArrayList<Task> tList =  tasksArray;
 				for (Task temp : tList) {
-					System.out.println("   "  +  temp.getName());
+					System.out.println("   "  + tList.indexOf(temp)+". " +  temp.getName());
 				}
 				break;
 			case "qualification":
+			case "5" : 
 				ArrayList<Qualification> qList =  qualificationsArray;
 				for (Qualification temp : qList) {
-					System.out.println("   "  +  temp.getName());
+					System.out.println("   "  + qList.indexOf(temp)+". " +  temp.getName());
 				}
 				break;
 		}
@@ -131,12 +169,15 @@ public class Themain {
 		
 	}
 
+	
+	
 	public static void mainMenu(){
 		System.out.println("Choose out of the following:(enter 0/1)");
 		System.out.println("0. View");
 		System.out.println("1. Update");
 	}
 
+	
 	public static void loadBasicInfo() {
 		accountingDep = new Department("Accounting Department");
 		researchDep = new Department("Research Department");
@@ -208,5 +249,11 @@ public class Themain {
 		tasksArray.add(task3_2);
 		tasksArray.add(task3_3);	
 	
+		ArraysArray.add(departmentsArray);
+		ArraysArray.add(managersArray);
+		ArraysArray.add(developersArray);
+		ArraysArray.add(projectsArray);
+		ArraysArray.add(tasksArray);
+		ArraysArray.add(qualificationsArray);
 	}
 }
