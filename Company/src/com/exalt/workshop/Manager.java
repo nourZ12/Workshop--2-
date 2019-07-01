@@ -6,6 +6,8 @@ import java.util.Iterator;
 public class Manager extends Employee{
 	private Project []projectSet;
 	private HashMap<Task, String> subscribedTasks = new HashMap<Task, String>();
+	
+	
 	public Manager(int iD, String name, Department department, Qualification[] qualificationSet) {
 		super(iD, name, department, qualificationSet);
 		

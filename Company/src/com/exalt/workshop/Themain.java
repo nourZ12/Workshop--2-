@@ -48,13 +48,13 @@ public class Themain {
 			} else if(answer == 1){
 				
 				chooseTheArrayToUpdate();
-				int arrayToUodate = in.nextInt();
+				int arrayToUodate = in.nextInt();  // the index of the array to add to 
 				
 				updateActionMenu();
 				answer = in.nextInt();
 				
 				if(answer == 0) { // add
-					
+					addingToArray(arrayToUodate);
 				}
 				else if (answer == 1) { // delete
 					System.out.println("inter the index fo the opject you ant to remove ");
@@ -70,6 +70,101 @@ public class Themain {
 			}
 		}
 
+	}
+
+	
+	private static void addingToArray(int arrayToUodate) {
+		Scanner in = new Scanner(System.in);
+		if(arrayToUodate == 0) {
+			System.out.println(" inter departement name ");
+			String depName = in.nextLine();
+			departmentsArray.add( new Department(depName) );
+		}
+		else if(arrayToUodate == 1) {
+			
+			System.out.println(" inter manager Id ");
+			String mangerId = in.nextLine();
+			
+			System.out.println(" inter manager name ");
+			String managerName = in.nextLine();
+			
+			System.out.println(" inter dep number ");
+			printArray("department");
+			String depName = in.nextLine();
+			boolean c = true;
+			while (c) {
+			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+			printArray("qualification");
+			String quali = in.nextLine();
+			qualificationsArray.get(Integer.parseInt(depName)); // this way we reach the quali to add , cant do arrayOfQuali.add as its not a List Type. 
+			if (quali.equals("1"))c=false;
+			}
+			
+			managersArray.add(  new Manager(Integer.parseInt(mangerId),managerName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+		}
+		else if(arrayToUodate == 2) {
+			System.out.println(" inter developers Id ");
+			String devId = in.nextLine();
+			
+			System.out.println(" inter developers name ");
+			String devName = in.nextLine();
+			
+			System.out.println(" inter dep number ");
+			printArray("department");
+			String depName = in.nextLine();
+			boolean c = true;
+			while (c) {
+			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+			printArray("qualification");
+			String quali = in.nextLine();
+			qualificationsArray.get(Integer.parseInt(depName)); 
+			if (quali.equals("1"))c=false;
+			}
+			
+			developersArray.add(  new Developer(Integer.parseInt(devId),devName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+		
+		}
+		else if(arrayToUodate == 3) {
+			System.out.println(" inter developers Id ");
+			String devId = in.nextLine();
+			
+			System.out.println(" inter developers name ");
+			String devName = in.nextLine();
+			
+			System.out.println(" inter dep number ");
+			printArray("department");
+			String depName = in.nextLine();
+//			boolean c = true;
+//			while (c) {
+//			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+//			printArray("qualification");
+//			String quali = in.nextLine();
+//			qualificationsArray.get(Integer.parseInt(depName)); 
+//			if (quali.equals("1"))c=false;
+//			}
+			
+			developersArray.add(  new Developer(Integer.parseInt(devId),devName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+		
+		}
+		else if(arrayToUodate == 4) {
+			
+			System.out.println(" inter tasks name ");
+			String taskName = in.nextLine();
+			
+			System.out.println(" task progress will be :  pending ");
+
+			
+			tasksArray.add(  new Task(taskName,"pending" ));
+		
+		}
+		else if(arrayToUodate == 5) {
+			System.out.println(" inter Qualification name ");
+			String qualiName = in.nextLine();
+			qualificationsArray.add( new Qualification(qualiName) );
+		}
+		else {
+			System.out.println("Not a Choise");
+		}
 	}
 
 	private static void chooseTheArrayToUpdate() {
@@ -157,16 +252,8 @@ public class Themain {
 					System.out.println("   "  + qList.indexOf(temp)+". " +  temp.getName());
 				}
 				break;
-		}
-		
-		
-//		
-//		 Iterator i = aList.iterator();
-//	      System.out.println(string + "s  : ");
-//	      while (i.hasNext()) {
-//	         System.out.println(i.next());
-//	      }
-		
+			default:
+		}		
 	}
 
 	
@@ -220,6 +307,8 @@ public class Themain {
 		firas.setTaskSet(new Task[] {task3_3});
 		nadin.setTaskSet(new Task[] {task2_2, task3_2});
 		
+		
+		//Arrays :
 		departmentsArray.add(accountingDep);
 		departmentsArray.add(productionDep);
 		departmentsArray.add(researchDep);
