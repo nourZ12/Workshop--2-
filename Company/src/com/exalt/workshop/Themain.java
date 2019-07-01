@@ -81,7 +81,7 @@ public class Themain {
 	private static void printArray(String string) {
 		
 		switch (string) {
-			case "manager":
+			case "manager":  
 				ArrayList<Manager> mList = managersArray;
 				for (Manager temp : mList) {
 					System.out.println("   "  + temp.getName() + " : " + temp.getID());
