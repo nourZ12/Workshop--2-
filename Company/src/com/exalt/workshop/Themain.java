@@ -32,7 +32,7 @@ public class Themain {
 	static String opjectsArray[] = {"department" ,"manager", "developer", "project" , "task" , "qualification"};
 	static ArrayList<ArrayList> ArraysArray = new ArrayList<ArrayList>();
 	
-	public static void main(String []argv) throws InterruptedException {	
+	public static void main(String[] args) throws InterruptedException {	
 		
 		Scanner in = new Scanner(System.in);
 		int answer;
@@ -42,10 +42,10 @@ public class Themain {
 		while(true) {
 			mainMenu();
 			answer = in.nextInt();
-			if(answer == 0){
+			if (answer == 0) {
 				viewMenu();
 				//answer = in.nextInt();
-			} else if(answer == 1){
+			} else if (answer == 1) {
 				
 				chooseTheArrayToUpdate();
 				int arrayToUodate = in.nextInt();  // the index of the array to add to 
@@ -55,14 +55,12 @@ public class Themain {
 				
 				if(answer == 0) { // add
 					addingToArray(arrayToUodate);
-				}
-				else if (answer == 1) { // delete
-					System.out.println("inter the index fo the opject you ant to remove ");
+				} else if (answer == 1) { // delete
+					System.out.println("Enter the index of the object you want to remove");
 					printArray(""+arrayToUodate);
 					answer = in.nextInt();
 					ArraysArray.get(arrayToUodate).remove(answer);
-				}
-				else {
+				} else {
 					System.out.println("error: invalid input!");
 				}
 			} else {
@@ -72,103 +70,98 @@ public class Themain {
 
 	}
 
-	
 	private static void addingToArray(int arrayToUodate) {
 		Scanner in = new Scanner(System.in);
-		if(arrayToUodate == 0) {
-			System.out.println(" inter departement name ");
+		if (arrayToUodate == 0) {
+			System.out.println("Enter department name:");
 			String depName = in.nextLine();
-			departmentsArray.add( new Department(depName) );
-		}
-		else if(arrayToUodate == 1) {
-			
-			System.out.println(" inter manager Id ");
+			departmentsArray.add(new Department(depName));
+		} else if (arrayToUodate == 1) {
+			System.out.println("Enter manager Id:");
 			String mangerId = in.nextLine();
 			
-			System.out.println(" inter manager name ");
+			System.out.println("Enter manager name:");
 			String managerName = in.nextLine();
 			
-			System.out.println(" inter dep number ");
+			System.out.println("Enter dep number:");
 			printArray("department");
 			String depName = in.nextLine();
 			boolean c = true;
 			while (c) {
-			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+			System.out.println("Enter qualifications name from list then press 1 when you're done");
 			printArray("qualification");
 			String quali = in.nextLine();
 			qualificationsArray.get(Integer.parseInt(depName)); // this way we reach the quali to add , cant do arrayOfQuali.add as its not a List Type. 
 			if (quali.equals("1"))c=false;
 			}
 			
-			managersArray.add(  new Manager(Integer.parseInt(mangerId),managerName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
-		}
-		else if(arrayToUodate == 2) {
-			System.out.println(" inter developers Id ");
+			managersArray.add(new Manager(Integer.parseInt(mangerId),managerName,
+							departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+		} else if (arrayToUodate == 2) {
+			System.out.println("Enter developers Id:");
 			String devId = in.nextLine();
 			
-			System.out.println(" inter developers name ");
+			System.out.println("Enter developers name:");
 			String devName = in.nextLine();
 			
-			System.out.println(" inter dep number ");
+			System.out.println("Enter dep number:");
 			printArray("department");
 			String depName = in.nextLine();
 			boolean c = true;
 			while (c) {
-			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+			System.out.println("Enter qualifications name from list then press 1 when you're done");
 			printArray("qualification");
 			String quali = in.nextLine();
 			qualificationsArray.get(Integer.parseInt(depName)); 
 			if (quali.equals("1"))c=false;
 			}
 			
-			developersArray.add(  new Developer(Integer.parseInt(devId),devName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+			developersArray.add(new Developer(Integer.parseInt(devId),devName,
+							    departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
 		
-		}
-		else if(arrayToUodate == 3) {
-			System.out.println(" inter developers Id ");
+		} else if (arrayToUodate == 3) {
+			System.out.println("Enter developers Id:");
 			String devId = in.nextLine();
 			
-			System.out.println(" inter developers name ");
+			System.out.println("Enter developers name:");
 			String devName = in.nextLine();
 			
-			System.out.println(" inter dep number ");
+			System.out.println("Enter dep number:");
 			printArray("department");
 			String depName = in.nextLine();
 //			boolean c = true;
 //			while (c) {
-//			System.out.println(" inter qualifivations name from list (when insert 1 it ends adding)");
+//			System.out.println("Enter qualifications name from list then press 1 when you're done");
 //			printArray("qualification");
 //			String quali = in.nextLine();
 //			qualificationsArray.get(Integer.parseInt(depName)); 
 //			if (quali.equals("1"))c=false;
 //			}
 			
-			developersArray.add(  new Developer(Integer.parseInt(devId),devName,departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
+			developersArray.add(new Developer(Integer.parseInt(devId),devName,
+							  departmentsArray.get(Integer.parseInt(depName)),null));// must take inserted # insted of name and chose it from list
 		
-		}
-		else if(arrayToUodate == 4) {
+		} else if (arrayToUodate == 4) {
 			
-			System.out.println(" inter tasks name ");
+			System.out.println("Enter the task's name");
 			String taskName = in.nextLine();
 			
-			System.out.println(" task progress will be :  pending ");
+			System.out.println("task progress will be :  pending ");
 
 			
-			tasksArray.add(  new Task(taskName,"pending" ));
+			tasksArray.add(new Task(taskName,"pending"));
 		
-		}
-		else if(arrayToUodate == 5) {
-			System.out.println(" inter Qualification name ");
+		} else if (arrayToUodate == 5) {
+			System.out.println("Enter Qualification name ");
 			String qualiName = in.nextLine();
-			qualificationsArray.add( new Qualification(qualiName) );
-		}
-		else {
-			System.out.println("Not a Choise");
+			qualificationsArray.add(new Qualification(qualiName) );
+		} else {
+			System.out.println("error: invalid input!");
 		}
 	}
 
 	private static void chooseTheArrayToUpdate() {
-		System.out.println("what clasification do you want to update ? (inter the number)");
+		System.out.println("what clasification do you want to update ? (Enter the number)");
 		for (int x = 0 ; x< opjectsArray.length; x++) {
 			System.out.println(x +". " + opjectsArray[x]);
 		}
@@ -176,34 +169,32 @@ public class Themain {
 	}
 
 	private static void updateActionMenu() {
-		System.out.println("what is the action you want to take ? (inter the number)");
+		System.out.println("what is the action you want to take ? (Enter the number)");
 		System.out.println("0. add");
 		System.out.println("1. delete");
 		
 	}
 
 	private static void viewMenu() {
-		System.out.println("Managers :");
+		System.out.println("Managers:");
 		printArray("manager");
 		
-		System.out.println("departments :");
+		System.out.println("Departments:");
 		printArray("department");
 		
-		System.out.println("developers :");
+		System.out.println("Developers:");
 		printArray("developers");
 		
-		System.out.println("projects :");
+		System.out.println("Projects:");
 		printArray("project");
 		
-		System.out.println("tasks :");
+		System.out.println("Tasks:");
 		printArray("task");
 		
-		System.out.println("qualifications :");
+		System.out.println("Qualifications:");
 		printArray("qualification");
 		
 	}
-
-	
 	
 	private static void printArray(String string) {
 		
@@ -256,15 +247,12 @@ public class Themain {
 		}		
 	}
 
-	
-	
 	public static void mainMenu(){
 		System.out.println("Choose out of the following:(enter 0/1)");
 		System.out.println("0. View");
 		System.out.println("1. Update");
 	}
 
-	
 	public static void loadBasicInfo() {
 		accountingDep = new Department("Accounting Department");
 		researchDep = new Department("Research Department");
